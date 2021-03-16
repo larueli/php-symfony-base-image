@@ -15,3 +15,4 @@ ONBUILD RUN echo "/usr/local/bin/php bin/console doctrine:migrations:migrate --n
             composer dump-autoload --classmap-authoritative ${COMPOSER_AUTOLOAD_PARAMS} && \
             chmod g=rwx -R /var/www/html
 ONBUILD USER 1547647:0
+ONBUILD ENV APACHE_DOCUMENT_ROOT=/var/www/html/public

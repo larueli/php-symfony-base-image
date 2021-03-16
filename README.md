@@ -8,11 +8,9 @@ This image is using ONBUILD and based on [larueli/php-base-image](https://github
 
 ```Dockerfile
 FROM larueli/symfony-base-image:8.0
-
-ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 ```
 
-It will automagically
+It will automagically :
 
 * copy all your files to /var/www/html (make sure to have a .dockerignore !)
 * install composer deps : you can add parameters with build arg : COMPOSER_INSTALL_PARAMS
