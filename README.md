@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/larueli/php-symfony-base-image.svg?branch=main)](https://travis-ci.com/larueli/php-symfony-base-image)
+
 # PHP Symfony Base Image
 
 Useful to quickly build symfony image suitable for openshift (no root).
