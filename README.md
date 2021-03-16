@@ -1,0 +1,43 @@
+# PHP Symfony Base Image
+
+Useful to quickly build symfony image suitable for openshift (no root).
+
+This image is using ONBUILD and based on [larueli/php-base-image](https://github.com/larueli/php-base-image), so you just need this in your Dockerfile :
+
+```Dockerfile
+FROM larueli/symfony-base-image:8.0
+
+ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
+```
+
+It will automagically
+
+* copy all your files to /var/www/html (make sure to have a .dockerignore !)
+* install composer deps : you can add parameters with build arg : COMPOSER_INSTALL_PARAMS
+* composer dump-autoload : you can add parameters with build arg : COMPOSER_AUTOLOAD_PARAMS
+* install doctrine migrations everytime your docker image starts
+
+## Production
+
+### Customize
+
+If you want to use this image in production, use it like that if you want to customize it :
+
+```Dockerfile
+FROM larueli/symfony-base-image:8.0
+
+ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
+VOLUME /var/www/html/uploads
+
+USER 0
+RUN apt-get update && apt-get install -y optipng && apt-get -y autoremove
+USER 2154451:0
+```
+
+Never forget to give all permissions to group root because this image should run with any uid inside the root group (OpenShift requirements).
+
+### Build
+
+If you want to build with composer --no-dev in prod, use it like that :
+
+`docker build -t my_incredible_image --build-arg APP_ENV=prod  --build-arg COMPOSER_AUTOLOAD_PARAMS="--no-dev" --build-arg COMPOSER_INSTALL_PARAMS="--no-dev" .`
