@@ -17,8 +17,8 @@ before_install:
   - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce    
 script:
   - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then echo "$DOCKER_HUB_TOKEN" | docker login -u larueli --password-stdin && PUSH="--push"; fi
-  - docker build --build-arg PHP_BUILD_VERSION=${PHP_BUILD_VERSION} -t larueli/symfony-base-image:${PHP_BUILD_VERSION} .
-  - if [ ! -z $PUSH ]; then docker push larueli/symfony-base-image:${PHP_BUILD_VERSION}; fi
+  - docker build --build-arg PHP_BUILD_VERSION=${PHP_BUILD_VERSION} -t larueli/php-symfony-base-image:${PHP_BUILD_VERSION} .
+  - if [ ! -z $PUSH ]; then docker push larueli/php-symfony-base-image:${PHP_BUILD_VERSION}; fi
         
 jobs:
   include:
@@ -28,6 +28,6 @@ jobs:
         - PHP_BUILD_VERSION=7.4
       script:
         - echo "$DOCKER_HUB_TOKEN" | docker login -u larueli --password-stdin
-        - docker pull larueli/symfony-base-image:7.4
-        - docker tag larueli/symfony-base-image:7.4 larueli/symfony-base-image:latest
-        - docker push larueli/symfony-base-image:latest
+        - docker pull larueli/php-symfony-base-image:7.4
+        - docker tag larueli/php-symfony-base-image:7.4 larueli/php-symfony-base-image:latest
+        - docker push larueli/php-symfony-base-image:latest
