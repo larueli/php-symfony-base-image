@@ -17,6 +17,16 @@ It will automagically :
 * composer dump-autoload : you can add parameters with build arg : COMPOSER_AUTOLOAD_PARAMS
 * install doctrine migrations everytime your docker image starts
 
+It will add all functionnalities from [larueli/php-base-image](https://github.com/larueli/php-base-image) :
+
+* Based on php:apache
+* Runs as non-root user.
+  * Capable to run with a random user in the root group (compatible with OpenShift)
+  * Port 8080 inside the container
+* Composer installed
+* Using [wait](https://github.com/ufoscout/docker-compose-wait) on top of entrypoint 
+* PHP extensions from the base image and I added some
+
 ## Production
 
 ### Customize
