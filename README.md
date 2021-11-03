@@ -1,4 +1,4 @@
-[![Build Status](https://github.com/larueli/php-symfony-base-image/actions/workflows/main.yml/badge.svg)](https://github.com/larueli/php-symfonybase-image/actions/workflows/main.yml)
+[![Build Status](https://github.com/larueli/php-symfony-base-image/actions/workflows/main.yml/badge.svg)](https://github.com/larueli/php-symfony-base-image/actions/workflows/main.yml)
 
 # PHP Symfony Base Image
 
