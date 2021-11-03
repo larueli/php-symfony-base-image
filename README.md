@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/larueli/php-symfony-base-image.svg?branch=main)](https://travis-ci.com/larueli/php-symfony-base-image)
+[![Build Status](https://github.com/larueli/php-symfony-base-image/actions/workflows/main.yml/badge.svg)](https://github.com/larueli/php-symfonybase-image/actions/workflows/main.yml)
 
 # PHP Symfony Base Image
 
@@ -7,7 +7,7 @@ Useful to quickly build symfony image suitable for openshift (no root).
 This image is using ONBUILD and based on [larueli/php-base-image](https://github.com/larueli/php-base-image), so you just need this in your Dockerfile :
 
 ```Dockerfile
-FROM larueli/symfony-base-image:8.0
+FROM larueli/php-symfony-base-image:8.0
 ```
 
 It will automagically :
@@ -31,12 +31,11 @@ It will add all functionnalities from [larueli/php-base-image](https://github.co
 
 ### Customize
 
-If you want to use this image in production, use it like that if you want to customize it :
+You can customize it :
 
 ```Dockerfile
-FROM larueli/symfony-base-image:8.0
+FROM larueli/php-symfony-base-image:8.0
 
-ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 VOLUME /var/www/html/uploads
 
 USER 0
