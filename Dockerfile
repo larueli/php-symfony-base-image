@@ -4,6 +4,10 @@ FROM larueli/php-base-image:${PHP_BUILD_VERSION}
 
 ENV PHP_BUILD_VERSION=${PHP_BUILD_VERSION}
 
+USER 0
+
+RUN echo 'deb [trusted=yes] https://repo.symfony.com/apt/ /' | tee /etc/apt/sources.list.d/symfony-cli.list && apt update && apt install symfony-cli && mkdir /.symfony5 && chmod g+rwx /.symfony5
+
 ONBUILD USER 0
 ONBUILD ARG APP_ENV=dev
 ONBUILD ARG COMPOSER_INSTALL_PARAMS=""
