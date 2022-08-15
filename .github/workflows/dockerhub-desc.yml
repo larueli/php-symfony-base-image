@@ -3,6 +3,12 @@ name: Change dockerhub description
 on:
   workflow_dispatch:
 
+  push:
+    branches:
+      - main
+    paths:
+      - README.md
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
