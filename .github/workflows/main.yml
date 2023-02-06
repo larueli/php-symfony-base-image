@@ -27,7 +27,17 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
       
-      - name: Build and push
+      - name: Build and push dev
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          context: ./
+          file: ./Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/php-symfony-base-image:${{ matrix.php-version }}-dev
+          build-args: PHP_BUILD_VERSION=${{ matrix.php-version }}-dev
+
+      - name: Build and push prod
         id: docker_build
         uses: docker/build-push-action@v2
         with:
@@ -52,5 +62,5 @@ jobs:
       - name: Push 8.0 to latest
         uses: akhilerm/tag-push-action@v2.1.0
         with:
-          src: docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/php-symfony-base-image:8.1
+          src: docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/php-symfony-base-image:8.2
           dst: docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/php-symfony-base-image:latest
