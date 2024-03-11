@@ -32,7 +32,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: ./
-          file: ./Dockerfile
+          file: ./Dockerfile.dev
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/php-symfony-base-image:${{ matrix.php-version }}-dev
           build-args: PHP_BUILD_VERSION=${{ matrix.php-version }}-dev
